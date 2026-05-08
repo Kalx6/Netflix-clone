@@ -1,10 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import logo from "../../assets/image/logo.png";
 import { Link } from "react-router-dom";
 import { Search, Bell, User, ChevronDown } from "lucide-react";
 import styles from "./Header.module.css";
 
 function Header() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -37,9 +39,20 @@ function Header() {
         <div className={styles.rightSection}>
           {/* search */}
           <div className={styles.searchSection}>
-            <button className={styles.searchButton}>
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className={styles.searchButton}
+            >
               <Search size={20} />
             </button>
+
+            {isSearchOpen && (
+              <input
+                type="text"
+                placeholder="movie title"
+                className={styles.searchInput}
+              />
+            )}
           </div>
 
           {/* notification */}
