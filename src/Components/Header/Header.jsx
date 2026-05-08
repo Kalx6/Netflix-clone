@@ -34,30 +34,28 @@ function Header() {
         </nav>
 
         {/* right side section */}
-        <div>
+        <div className={styles.rightSection}>
           {/* search */}
-          <div>
-            <button>
-              <Search />
+          <div className={styles.searchSection}>
+            <button className={styles.searchButton}>
+              <Search size={20} />
             </button>
           </div>
 
           {/* notification */}
 
-          <div>
-            <button>
-              <Bell />
-              {/* notification icon */}
-              <span>1</span>
-            </button>
-          </div>
+          <button className={styles.iconButton}>
+            <Bell size={20} />
+            {/* notification icon */}
+            <span className={styles.notificationBadge}>1</span>
+          </button>
 
           {/* Profile */}
 
-          <div>
-            <button>
-              <div>
-                <User />
+          <div className={styles.profileContainer}>
+            <button className={styles.profileButton}>
+              <div className={styles.profileAvatar}>
+                <User size={20} />
               </div>
               <ChevronDown />
             </button>
