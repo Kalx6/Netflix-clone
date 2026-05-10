@@ -6,6 +6,7 @@ import styles from "./Header.module.css";
 
 function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -49,7 +50,7 @@ function Header() {
             {isSearchOpen && (
               <input
                 type="text"
-                placeholder="movie title"
+                placeholder="Movie title"
                 className={styles.searchInput}
               />
             )}
@@ -66,12 +67,23 @@ function Header() {
           {/* Profile */}
 
           <div className={styles.profileContainer}>
-            <button className={styles.profileButton}>
+            <button
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              className={styles.profileButton}
+            >
               <div className={styles.profileAvatar}>
                 <User size={20} />
               </div>
               <ChevronDown />
             </button>
+            {isProfileOpen && (
+              <div className={styles.profileMenu}>
+                <Link className={styles.profileMenuItems}>Account</Link>
+                <Link className={styles.profileMenuItems}>Help center</Link>
+                <br className={styles.profileMenuDivider} />
+                <button className={styles.profileMenuItems}>Sign out</button>
+              </div>
+            )}
           </div>
         </div>
       </div>
