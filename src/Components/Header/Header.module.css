@@ -9,7 +9,11 @@
   width: 100%;
   z-index: 1000;
   backdrop-filter: blur(3px);
-  background-color: black;
+  transition: background-color 0.4s ease;
+}
+
+.isScrolled {
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .container {

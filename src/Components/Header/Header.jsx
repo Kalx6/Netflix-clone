@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import logo from "../../assets/image/logo.png";
 import { Link } from "react-router-dom";
 import { Search, Bell, User, ChevronDown } from "lucide-react";
@@ -8,8 +8,23 @@ function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
+  // For blur
+  const [isScrolled, setIsSrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSrolled(true);
+      } else {
+        setIsSrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className={styles.header}>
+    <header className={`$(styles.header) $(isScrolled? styles.scrolled:"")`}>
       <div className={styles.container}>
         {/* Logo */}
         <img className={styles.logo} src={logo} alt="logo" />
