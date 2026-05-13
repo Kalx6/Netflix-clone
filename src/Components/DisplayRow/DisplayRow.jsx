@@ -5,7 +5,7 @@ import { movies } from "../../Data/Data";
 
 function DisplayRow() {
   return (
-    <div>
+    <div className={styles.mainWrapper}>
       <SlideShow title="Movie suggestions" movies={movies} />
     </div>
   );
