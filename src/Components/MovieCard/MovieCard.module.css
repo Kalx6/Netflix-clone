@@ -22,9 +22,10 @@
   position: absolute;
   top: -50%;
   left: 50%;
-  transform: translateX((-50%)) scale(0.95);
+  transform: translateX(-50%) scale(0.95);
   width: 320px;
   min-height: 305px;
+  /* height: 200px; */
   height: auto;
   background: #111;
   border-radius: 8px;
@@ -54,6 +55,8 @@
   visibility: visible;
   transform: scale(1);
   pointer-events: auto;
+  overflow: visible;
+
 }
 
 .hoverImage {
@@ -71,12 +74,16 @@
   border-radius: 4px;
   display: inline-block;
   margin: 10px 0 0 12px;
+ 
   font-weight: 500;
 }
 
 .buttonRow {
   display: flex;
   gap: 8px;
+  margin-top: 8px;
+  margin-left: 12px;
+
   margin: 12px;
   align-items: center;
 }
@@ -84,8 +91,9 @@
 .metaRow {
   color: white;
   display: flex;
-  gap: 11px;
+  gap: 10px;
   margin: 8px 12px;
+
   font-size: 14px;
   font-weight: 500;
 }
@@ -124,6 +132,7 @@
   color: #bbb;
   font-size: 13px;
   margin: 6px 12px 12px 12px;
+ 
   line-height: 1.4;
   display: flex;
   gap: 5px;

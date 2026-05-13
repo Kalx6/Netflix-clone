@@ -5,22 +5,23 @@ import { BsPlusCircle } from "react-icons/bs";
 import { GoCheckCircleFill } from "react-icons/go";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
-function MovieCard(movie) {
+function MovieCard({ movie }) {
   let gener = ["Adventure", "Action", "Thriller"];
   return (
     <div className={styles.movieCardWrapper}>
       <img
-        src={movie.poster_path}
+        src={movie?.poster_path}
         className={styles.poster}
         alt="poster image"
       />
 
       <div className={styles.hoverCard}>
         <img
-          src={movie.poster_path}
+          src={movie?.poster_path}
           className={styles.hoverImage}
           alt="hover image"
         />
+
         <div className={styles.badge}>Recently Added </div>
         <div className={styles.buttonRow}>
           <FaCirclePlay
@@ -52,7 +53,7 @@ function MovieCard(movie) {
         </div>
 
         <div className={styles.gener}>
-          {gener.map((a, index) => (
+          {gener?.map((a, index) => (
             <span key={index}>
               {a}
               <span> </span>
