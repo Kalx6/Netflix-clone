@@ -10,11 +10,12 @@ function SlideShow({ title, movies }) {
   return (
     <div>
       <h1 className={styles.title}>{title}</h1>
-      <div>
+      <div className={styles.movieRow}>
         <Swiper
           modules={[Navigation]}
           navigation
           spaceBetween={10}
+          style={{ overflow: "visible" }}
           slidesPerView={5.8}
         >
           {movies?.map((movie, index) => (

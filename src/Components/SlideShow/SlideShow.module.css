@@ -50,3 +50,10 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Your movie row / slider container */
+.movieRow {
+  overflow: visible; /* ← was 'hidden', which clips the hover card */
+  padding-bottom: 200px; /* ← add padding so the hover card has visual space */
+  margin-bottom: -200px; /* ← cancel the layout shift from the padding */
+}
