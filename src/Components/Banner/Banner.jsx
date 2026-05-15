@@ -1,21 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NetflixBannerLogo from "../../assets/image/logo.png";
 import { Play, Info } from "lucide-react";
 import styles from "./Banner.module.css";
+import movieInstance from "../../Utility/MovieInstance";
+import requests from "../../Utility/MovieReference";
+
+const BANNER_BASE = "https://image.tmdb.org/t/p/original/";
 
 function Banner() {
+  const [bannerImage, setImageBanner] = useState({});
+
+  useEffect(() => {
+    async function fetchBannerImage() {
+      const request = await movieInstance.get(requests.fetchNetflixOriginals);
+      setImageBanner(
+        request.data.results[
+          Math.floor(Math.random() * request.data.results.length)
+        ],
+      );
+    }
+    fetchBannerImage();
+  }, []);
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) : str;
+  }
   return (
-    <div className={styles.banner}>
+    <div
+      className={styles.banner}
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: `url(${BANNER_BASE}${bannerImage.backdrop_path})`,
+      }}
+    >
       <div className={styles.contents}>
         {/* netflix logo */}
         <img className={styles.logoImg} src={NetflixBannerLogo} alt="" />
         {/* title */}
-        <h1 className={styles.title}>Bridgerton</h1>
+        <h1 className={styles.title}>{bannerImage?.original_name}</h1>
         {/* description */}
         <h1 className={styles.description}>
-          Shondaland's Emmy-winning series brings Julia Quinns novels to life,
-          as eight siblings seek their perfect macth amid london's scandals and
-          soirees.
+          {truncate(bannerImage?.overview, 120)}
         </h1>
 
         {/* button */}
